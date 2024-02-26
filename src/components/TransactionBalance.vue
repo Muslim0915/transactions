@@ -21,4 +21,17 @@ const props = defineProps({
 
 <style scoped lang="scss">
 
+.balance{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  text-transform: capitalize;
+  .balance-currency{
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
 </style>

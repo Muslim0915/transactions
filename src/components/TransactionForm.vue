@@ -42,11 +42,11 @@ const props = defineProps({
     </h2>
     <div class="form-control">
       <label for="title">Text</label>
-      <input id="title" v-model="title" type="text"/>
+      <input id="title" v-model="title" placeholder="Enter transaction text" type="text"/>
     </div>
     <div class="form-control">
       <label for="amount">Amount</label>
-      <input id="amount" v-model="amount" type="number"/>
+      <input id="amount" v-model="amount" placeholder="Enter transaction amount" step="0.00000000000001" type="number"/>
     </div>
     <div class="form-control">
       <AppButton :value="'Add transaction'" class="submit-button" type="submit"/>

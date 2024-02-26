@@ -11,27 +11,20 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  isContentEditable:{
-    type: Boolean,
-    default: false
-  }
 });
 
-const emit = defineEmits(['deleteTransaction', 'editTransaction']);
+const emit = defineEmits(['deleteTransaction']);
 
 
 </script>
 
 <template>
   <div class="transaction-history__item">
-    <h3 class="transaction-history__title" :contenteditable="props.isContentEditable">
+    <h3 class="transaction-history__title">
       {{props.title}}
       $ {{props.amount}}
     </h3>
-    <div class="transaction-history__buttons">
       <AppButton value="Delete" class="delete-button" @click="emit('deleteTransaction')"/>
-      <AppButton value="Edit" class="edit-button" @click="emit('editTransaction')" />
-    </div>
   </div>
 </template>
 
@@ -74,11 +67,4 @@ const emit = defineEmits(['deleteTransaction', 'editTransaction']);
     background-color: #c0392b;
   }
 }
-.edit-button{
-  background-color: #2ecc71;
-  &:hover{
-    background-color: #27ae60;
-  }
-}
-
 </style>

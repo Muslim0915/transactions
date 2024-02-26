@@ -41,7 +41,7 @@ const totalExpense = computed(() => {
 const totalBalance = computed(() => {
   return transactions.value.reduce((acc, transaction) => {
     return acc + transaction.amount;
-  }, 0);
+  }, 0).toFixed(2);
 });
 const addTransaction = (data) => {
   transactions.value.push({
@@ -53,13 +53,9 @@ const addTransaction = (data) => {
   saveTransactionData();
 }
 
-const isEditable = ref(false);
-const editTransaction = id=> {
-  isEditable.value = true;
-  saveTransactionData();
-}
 const deleteTransaction = (id) => {
   transactions.value = transactions.value.filter((transaction) => transaction.id !== id);
+  toast.success('Transaction deleted')
   saveTransactionData();
 }
 
@@ -80,8 +76,6 @@ const deleteTransaction = (id) => {
           :class="transaction.amount < 0 ? 'minus' : 'plus'"
           :title="transaction.title"
           @deleteTransaction="deleteTransaction(transaction.id)"
-          @editTransaction="editTransaction(transaction.id)"
-          :is-content-editable="isEditable"
       />
     </div>
     <TransactionForm @addTransaction="addTransaction"/>
